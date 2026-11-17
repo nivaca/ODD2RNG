@@ -14,6 +14,8 @@ its header comment.
 odd2rng.py smed-schema.xml          # writes out/smed-schema.rng, as oXygen does
 ```
 
+How it was made is told in [`docs/DESCRIPTION.md`](docs/DESCRIPTION.md).
+
 ## Requirements
 
 - Python 3.15 or later, with the `saxonche` library (Saxon for Python).

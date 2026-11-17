@@ -14,6 +14,8 @@ fecha de generación del comentario de cabecera.
 odd2rng.py smed-schema.xml          # escribe out/smed-schema.rng, como oXygen
 ```
 
+Cómo se hizo se cuenta en [`docs/DESCRIPCIÓN_es.md`](docs/DESCRIPCIÓN_es.md).
+
 ## Requisitos
 
 - Python 3.15 o posterior, con la biblioteca `saxonche` (Saxon para Python).
