@@ -4,6 +4,13 @@ All notable changes to ODD2RNG. The releases, with their zip files, are on
 [Codeberg](https://codeberg.org/nivaca/ODD2RNG/releases) and
 [GitHub](https://github.com/nivaca/ODD2RNG/releases).
 
+## 1.2 — 2026-11-19
+
+- py-xmlvalidate, the Schematron validator that reads ODD2RNG's
+  configuration, is renamed py-schematron: the links and
+  `tools/release.py` follow.
+- The conversion does not change.
+
 ## 1.1 — 2026-11-19
 
 - `odd2rng.py --about` says what the program is, who made it, its licence

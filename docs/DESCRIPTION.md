@@ -77,7 +77,7 @@ which folders are in use.
 --------------------------------
 
 `odd2rng-install.py` puts a symbolic link to the script in `~/bin`, as
-`py-xmlvalidate-install.py` does for py-xmlvalidate, so the command works
+`py-schematron-install.py` does for py-schematron, so the command works
 from any folder and a `git pull` in the clone updates it.  It never
 overwrites a file, nor a link that points elsewhere unless asked, and it
 says whether `~/bin` is on the PATH and whether `python3` has saxonche.
@@ -93,7 +93,7 @@ The schema the script makes was compared with oXygen's on the smed ODD,
 with oXygen's TEI Stylesheets and with the newer clone: in both cases the
 only difference is the date in the header.  The schema it makes also
 gives the same results when the SMTrad Latin edition (about 26,000
-lines) is checked with py-xmlvalidate, and the edition stays valid
+lines) is checked with py-schematron, and the edition stays valid
 against it with jing.  The installer and the configuration were tried in
 throwaway folders (with `ODD2RNG_CONFIG` and `--bin`): a first install,
 a second one, a file and a foreign link already in place, `--force`,

@@ -138,7 +138,7 @@ clon de las Stylesheets, así que ninguna se salta.
 de `CHANGELOG.md`: corre las pruebas, hace el zip, etiqueta, sube a Codeberg
 y a GitHub, crea ambas versiones y comprueba las descargas (`--dry-run` se
 detiene antes de etiquetar). Es el script de publicación de
-[py-xmlvalidate](https://codeberg.org/nivaca/py-xmlvalidate), que también
+[py-schematron](https://codeberg.org/nivaca/py-schematron), que también
 conoce este repositorio.
 
 ## Licencia

@@ -138,7 +138,7 @@ every Monday, with a clone of the Stylesheets, so none is skipped.
 notes of `CHANGELOG.md`: it runs the tests, makes the zip, tags, pushes to
 Codeberg and GitHub, makes both releases and checks the downloads
 (`--dry-run` stops before tagging). It is the release script of
-[py-xmlvalidate](https://codeberg.org/nivaca/py-xmlvalidate), which knows
+[py-schematron](https://codeberg.org/nivaca/py-schematron), which knows
 this repository too.
 
 ## License

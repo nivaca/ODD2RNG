@@ -4,7 +4,7 @@
 
 ODD2RNG es una orden, `odd2rng.py`, que convierte un ODD de TEI en su esquema RELAX NG como lo hace oXygen, sin abrir oXygen. La hice en noviembre de 2026 para los esquemas del proyecto SMTrad, cuyas ediciones se validan contra el RELAX NG generado a partir de un ODD. Es software libre, bajo la Licencia Pública General de GNU, versión 3 o posterior.
 
-Hasta entonces, cada cambio en el esquema smed obligaba a abrir el ODD en oXygen y ejecutar su transformación «TEI ODD to RELAX NG XML». Los requisitos eran tres. El esquema tenía que salir igual que el de oXygen, para que nada cambiara en las ediciones ni en las herramientas que lo leen (py-xmlvalidate, VS Code, Emacs y el propio oXygen). Tenía que poder hacerse desde la terminal, con una sola orden y desde cualquier carpeta. Y no podía dejar archivos sueltos en el repositorio del esquema ni un esquema a medio escribir que otro programa pudiera leer en ese momento.
+Hasta entonces, cada cambio en el esquema smed obligaba a abrir el ODD en oXygen y ejecutar su transformación «TEI ODD to RELAX NG XML». Los requisitos eran tres. El esquema tenía que salir igual que el de oXygen, para que nada cambiara en las ediciones ni en las herramientas que lo leen (py-schematron, VS Code, Emacs y el propio oXygen). Tenía que poder hacerse desde la terminal, con una sola orden y desde cualquier carpeta. Y no podía dejar archivos sueltos en el repositorio del esquema ni un esquema a medio escribir que otro programa pudiera leer en ese momento.
 
 ## Diseño
 
@@ -35,7 +35,7 @@ La primera versión tomaba las hojas de estilo de la carpeta de oXygen. Pero ten
 
 ### Proceso y distribución
 
-`odd2rng-install.py` pone en `~/bin` un enlace simbólico al script, como hace `py-xmlvalidate-install.py` con py-xmlvalidate, de modo que la orden funciona desde cualquier carpeta y un `git pull` en el clon la actualiza. Nunca sobrescribe un archivo, ni un enlace que apunte a otro sitio salvo que se le pida, y avisa si `~/bin` no está en el PATH o si `python3` no tiene saxonche. Escribe también el archivo de configuración, si no existe, con la carpeta de hojas de estilo que se le indique. `tools/bundle-zip.py` hace el zip de cada versión con los archivos que git sigue.
+`odd2rng-install.py` pone en `~/bin` un enlace simbólico al script, como hace `py-schematron-install.py` con py-schematron, de modo que la orden funciona desde cualquier carpeta y un `git pull` en el clon la actualiza. Nunca sobrescribe un archivo, ni un enlace que apunte a otro sitio salvo que se le pida, y avisa si `~/bin` no está en el PATH o si `python3` no tiene saxonche. Escribe también el archivo de configuración, si no existe, con la carpeta de hojas de estilo que se le indique. `tools/bundle-zip.py` hace el zip de cada versión con los archivos que git sigue.
 
 ## Lo que vino de oXygen
 
@@ -43,7 +43,7 @@ Todo lo que la conversión hace viene del escenario de oXygen: los dos pasos, la
 
 ## Validación
 
-El esquema que hace el script se comparó con el de oXygen sobre el ODD de smed, con las TEI Stylesheets de oXygen y con el clon más nuevo: en los dos casos la única diferencia es la fecha de la cabecera. El esquema generado da además los mismos resultados al validar con py-xmlvalidate la edición latina de SMTrad, de unas 26 000 líneas, y la edición sigue siendo válida contra él con jing.
+El esquema que hace el script se comparó con el de oXygen sobre el ODD de smed, con las TEI Stylesheets de oXygen y con el clon más nuevo: en los dos casos la única diferencia es la fecha de la cabecera. El esquema generado da además los mismos resultados al validar con py-schematron la edición latina de SMTrad, de unas 26 000 líneas, y la edición sigue siendo válida contra él con jing.
 
 El instalador y la configuración se probaron en carpetas desechables (con `ODD2RNG_CONFIG` y `--bin`): una primera instalación y una segunda, un archivo y un enlace ajeno ya presentes, `--force`, `--uninstall`, una ruta relativa en la configuración, un archivo que no es TOML, un ajuste desconocido, una carpeta que no es de las TEI Stylesheets y el orden entre la línea de órdenes, el entorno y el archivo. Una conversión tarda unos cinco segundos.
 
