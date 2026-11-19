@@ -78,6 +78,7 @@ el archivo y las ubicaciones en uso.
 ```
 odd2rng.py ODD [-o RNG] [--stylesheets CARPETA] [--p5subset ARCHIVO] [--lang IDIOMA]
 odd2rng.py --show-config
+odd2rng.py --about
 ```
 
 | Opción | Significado |
@@ -88,6 +89,7 @@ odd2rng.py --show-config
 | `--p5subset ARCHIVO` | La fuente de TEI, en lugar de la configurada |
 | `--lang IDIOMA` | Idioma de la documentación del esquema (por defecto, `en`) |
 | `--show-config` | Muestra el archivo de configuración y las ubicaciones en uso |
+| `--about` | Qué es el programa, quién lo hizo, su licencia y sus repositorios, y con qué corre aquí: Python, saxonche y Saxon, el archivo de configuración, las TEI Stylesheets y la fuente de TEI |
 
 La última línea de la salida dice si el esquema cambió: *It is new*, *The
 schema changed* o *Unchanged apart from the generation date*; en este último
@@ -114,6 +116,30 @@ escribir.
 La salida se comparó con la de oXygen sobre el ODD del proyecto SMTrad, con
 las TEI Stylesheets del propio oXygen (7.60.0) y con un clon más reciente
 (7.62.0a): la única diferencia es la fecha de la cabecera.
+
+## Pruebas y versiones
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+corre las pruebas (`tests/test_odd2rng.py`) en una carpeta temporal, con una
+configuración propia, de modo que tus ajustes no cambian nada: el archivo de
+configuración y el orden de las ubicaciones, `--about` y `--show-config`,
+los mensajes de error y conversiones reales de un ODD pequeño (el esquema,
+una segunda pasada que lo encuentra sin cambios, `-o`, un ODD modificado,
+uno roto). Las conversiones necesitan las TEI Stylesheets con
+`source/p5subset.xml`, de `ODD2RNG_TEST_STYLESHEETS` o de tu archivo de
+configuración; comprobar el esquema con documentos necesita lxml. Sin ellos,
+esas pruebas se saltan. En GitHub corren en cada *push* y cada lunes, con un
+clon de las Stylesheets, así que ninguna se salta.
+
+`python3 tools/release.py` publica la versión de `odd2rng.py`, con las notas
+de `CHANGELOG.md`: corre las pruebas, hace el zip, etiqueta, sube a Codeberg
+y a GitHub, crea ambas versiones y comprueba las descargas (`--dry-run` se
+detiene antes de etiquetar). Es el script de publicación de
+[py-xmlvalidate](https://codeberg.org/nivaca/py-xmlvalidate), que también
+conoce este repositorio.
 
 ## Licencia
 

@@ -7,6 +7,7 @@ RELAX NG XML" transformation does.
 
     odd2rng.py ODD [-o OUT] [--stylesheets DIR] [--p5subset FILE] [--lang LANG]
     odd2rng.py --show-config
+    odd2rng.py --about
 
 For example, odd2rng.py smed-schema.xml writes out/smed-schema.rng next to
 the ODD, where oXygen writes it.
@@ -61,7 +62,7 @@ import time  # noqa: E402
 import tomllib  # noqa: E402
 from pathlib import Path  # noqa: E402
 
-__version__ = "1.0"
+__version__ = "1.1"
 
 STAMP = re.compile(r"Schema generated from ODD source [^\n]*")
 CONFIG_KEYS = {"stylesheets", "p5subset", "lang"}
@@ -204,6 +205,49 @@ def show_config(args, config):
     print(f"Language:        {args.lang or config.get('lang') or 'en'}")
 
 
+def about(args) -> str:
+    """The text of --about: what this is, whose, its licence and where it
+    lives, and what it runs with here (Python, saxonche and Saxon, the
+    configuration file, the TEI Stylesheets and source it would use)."""
+    from importlib.metadata import PackageNotFoundError, version
+
+    def located(find):
+        try:
+            return str(find())
+        except SystemExit as e:                  # (not found: say why)
+            why = str(e.code).splitlines()[0]
+            if why.startswith("Where are"):      # (nothing given anywhere)
+                why = "give them with --stylesheets, TEI_STYLESHEETS or the configuration file"
+            return f"not found: {why}"
+    try:
+        saxonche = version("saxonche")
+        from saxonche import PySaxonProcessor
+        with PySaxonProcessor(license=False) as proc:
+            saxonche += f" ({proc.version})"
+    except (PackageNotFoundError, ImportError):
+        saxonche = "not installed (pip install saxonche)"
+    config = load_config()
+    stylesheets = located(lambda: find_stylesheets(args.stylesheets, config))
+    p5subset = (located(lambda: find_p5subset(args.p5subset, config, Path(stylesheets)))
+                if not stylesheets.startswith("not found") else "(needs the Stylesheets)")
+    path = config_path()
+    return f"""odd2rng.py {__version__}
+RELAX NG schemas from TEI ODDs, made as oXygen's "TEI ODD to RELAX NG XML"
+transformation makes them, with the TEI Stylesheets and Saxon.
+
+Author:          Nicolas Vaughan <nicolasvaughan@proton.me>
+Licence:         GNU General Public License, version 3 or later
+Code:            https://codeberg.org/nivaca/ODD2RNG
+                 https://github.com/nivaca/ODD2RNG
+
+This script:     {Path(__file__).resolve()}
+Python:          {sys.version.split()[0]} ({sys.executable})
+saxonche:        {saxonche}
+Configuration:   {path}{"" if path.is_file() else " (does not exist)"}
+TEI Stylesheets: {stylesheets}
+TEI source:      {p5subset}"""
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(
         prog="odd2rng.py",
@@ -222,7 +266,13 @@ def main(argv=None):
     parser.add_argument("--show-config", action="store_true",
                         help="show the configuration file and the locations in use, and exit")
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+    parser.add_argument("--about", action="store_true",
+                        help="what this program is, whose, its licence and where it lives, "
+                             "and what it runs with here; then exit")
     args = parser.parse_args(argv)
+    if args.about:
+        print(about(args))
+        return
     config = load_config()
 
     if args.show_config:

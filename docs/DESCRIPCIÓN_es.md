@@ -47,6 +47,8 @@ El esquema que hace el script se comparó con el de oXygen sobre el ODD de smed,
 
 El instalador y la configuración se probaron en carpetas desechables (con `ODD2RNG_CONFIG` y `--bin`): una primera instalación y una segunda, un archivo y un enlace ajeno ya presentes, `--force`, `--uninstall`, una ruta relativa en la configuración, un archivo que no es TOML, un ajuste desconocido, una carpeta que no es de las TEI Stylesheets y el orden entre la línea de órdenes, el entorno y el archivo. Una conversión tarda unos cinco segundos.
 
+La versión 1.1 convirtió esas comprobaciones en un conjunto de 15 pruebas, que corren en GitHub en cada *push* y cada lunes con un clon recién hecho de las TEI Stylesheets, de modo que un cambio en ellas aparece en menos de una semana. Las pruebas convierten de verdad un ODD pequeño, lo que tarda alrededor de un segundo, y comprueban el esquema con lxml frente a un documento válido y otro que no lo es. La misma versión añadió `--about`, que dice qué Python, qué saxonche, qué archivo de configuración y qué Stylesheets y fuente de TEI usaría el programa.
+
 ## Plataforma
 
 Funciona en Linux. Necesita Python 3.15 o superior con saxonche, las TEI Stylesheets (un clon del repositorio del Consorcio TEI o la copia de oXygen) y la fuente de TEI, `p5subset.xml`, que viene en un clon de las Stylesheets y en oXygen, y también se puede descargar del sitio de TEI. No necesita oXygen ni Java.

@@ -78,6 +78,7 @@ shows the file and the locations in use.
 ```
 odd2rng.py ODD [-o RNG] [--stylesheets DIR] [--p5subset FILE] [--lang LANG]
 odd2rng.py --show-config
+odd2rng.py --about
 ```
 
 | Option | Meaning |
@@ -88,6 +89,7 @@ odd2rng.py --show-config
 | `--p5subset FILE` | The TEI source, instead of the configured one |
 | `--lang LANG` | Language of the documentation in the schema (default `en`) |
 | `--show-config` | Show the configuration file and the locations in use |
+| `--about` | What the program is, who made it, its licence and repositories, and what it runs with here: Python, saxonche and Saxon, the configuration file, the TEI Stylesheets and source |
 
 The last line of the output says whether the schema changed: *It is new*,
 *The schema changed*, or *Unchanged apart from the generation date*, in
@@ -114,6 +116,30 @@ half-written.
 The output was compared with oXygen's on the SMTrad project's ODD, both with
 oXygen's own TEI Stylesheets (7.60.0) and with a newer clone (7.62.0a): the
 only difference is the date in the header.
+
+## Tests and releases
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+runs the tests (`tests/test_odd2rng.py`) in a temporary folder, with a
+configuration of their own, so your settings change nothing: the
+configuration file and the order of the locations, `--about` and
+`--show-config`, the error messages, and real conversions of a small ODD
+(the schema, a second run that finds it unchanged, `-o`, a changed ODD, a
+broken one). The conversions need the TEI Stylesheets with
+`source/p5subset.xml`, from `ODD2RNG_TEST_STYLESHEETS` or your
+configuration file; checking the schema against documents needs lxml.
+Without them those tests are skipped. On GitHub they run at every push and
+every Monday, with a clone of the Stylesheets, so none is skipped.
+
+`python3 tools/release.py` releases the version in `odd2rng.py`, with the
+notes of `CHANGELOG.md`: it runs the tests, makes the zip, tags, pushes to
+Codeberg and GitHub, makes both releases and checks the downloads
+(`--dry-run` stops before tagging). It is the release script of
+[py-xmlvalidate](https://codeberg.org/nivaca/py-xmlvalidate), which knows
+this repository too.
 
 ## License
 

@@ -102,3 +102,11 @@ TOML, an unknown setting, a folder that is not the TEI Stylesheets, and
 the order of the command line, the environment and the file.  A
 conversion takes about five seconds.  The program has three files, about
 560 lines.
+
+Version 1.1 turned those checks into a test suite of 15 tests, which run
+on GitHub at every push and every Monday with a fresh clone of the TEI
+Stylesheets, so that a change upstream shows up within a week.  The
+suite converts a small ODD for real, which takes about a second, and
+checks the schema against a valid and an invalid document with lxml.
+The same version added `--about`, which says which Python, saxonche,
+configuration file, Stylesheets and TEI source the program would use.
