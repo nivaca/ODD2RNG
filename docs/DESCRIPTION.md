@@ -4,9 +4,19 @@ How ODD2RNG was made
 ODD2RNG is a command, `odd2rng.py`, that turns a TEI ODD into its RELAX NG
 schema the way oXygen does, without opening oXygen.  Nicolas Vaughan made
 it in November 2026 for the schemas of the SMTrad project, whose editions
-are checked against the RELAX NG generated from an ODD.  It is free
-software, under the GNU General Public License, version 3 or later.  Here
-I explain how it was made, in four stages.
+are checked against the RELAX NG generated from an ODD.
+
+ODD2RNG is free software, under the GNU General Public License, version
+3 or later.  What it runs with keeps its own licence: Python under the PSF
+License, saxonche (SaxonC-HE) under the Mozilla Public License 2.0, the
+TEI Stylesheets under BSD-2-Clause or CC-BY-SA-3.0, and the TEI source
+under BSD-2-Clause or CC-BY-3.0.  None of them is copied into the program.  The full list,
+with what is used to test it, is in `docs/THIRD-PARTY.md`.
+
+Nicolas Vaughan is Associate Professor of Literature at the School of Arts
+and Humanities of the Universidad de los Andes, Bogotá, Colombia.
+
+Here I explain how it was made, in four stages.
 
 
 1. What oXygen does

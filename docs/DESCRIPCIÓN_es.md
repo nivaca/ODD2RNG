@@ -1,8 +1,8 @@
-# ODD2RNG 1.0: descripción
+# ODD2RNG 1.3: descripción
 
 ## Análisis
 
-ODD2RNG es una orden, `odd2rng.py`, que convierte un ODD de TEI en su esquema RELAX NG como lo hace oXygen, sin abrir oXygen. Fue hecha en noviembre de 2026 para los esquemas del proyecto SMTrad, cuyas ediciones se validan contra el RELAX NG generado a partir de un ODD. Es software libre, bajo la Licencia Pública General de GNU, versión 3 o posterior.
+ODD2RNG es una orden, `odd2rng.py`, que convierte un ODD de TEI en su esquema RELAX NG como lo hace oXygen, sin abrir oXygen. Fue hecha en noviembre de 2026 para los esquemas del proyecto SMTrad, cuyas ediciones se validan contra el RELAX NG generado a partir de un ODD. Es software libre, bajo la Licencia Pública General de GNU, versión 3 o posterior. Lo que usa conserva su licencia: Python, la de la PSF; saxonche (SaxonC-HE), la Mozilla Public License 2.0; las TEI Stylesheets, BSD-2-Clause o CC-BY-SA-3.0, y la fuente de TEI, BSD-2-Clause o CC-BY-3.0. La lista completa, con lo que se usa para probarlo, está en `docs/THIRD-PARTY_es.md`.
 
 Hasta entonces, cada cambio en el esquema smed obligaba a abrir el ODD en oXygen y ejecutar su transformación «TEI ODD to RELAX NG XML». Los requisitos eran tres. El esquema tenía que salir igual que el de oXygen, para que nada cambiara en las ediciones ni en las herramientas que lo leen (py-schematron, VS Code, Emacs y el propio oXygen). Tenía que poder hacerse desde la terminal, con una sola orden y desde cualquier carpeta. Y no podía dejar archivos sueltos en el repositorio del esquema ni un esquema a medio escribir que otro programa pudiera leer en ese momento.
 

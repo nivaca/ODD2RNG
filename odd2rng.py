@@ -62,7 +62,7 @@ import time  # noqa: E402
 import tomllib  # noqa: E402
 from pathlib import Path  # noqa: E402
 
-__version__ = "1.2"
+__version__ = "1.3"
 
 STAMP = re.compile(r"Schema generated from ODD source [^\n]*")
 CONFIG_KEYS = {"stylesheets", "p5subset", "lang"}

@@ -2,7 +2,7 @@
 
 *(English: [README.md](README.md))*
 
-**Versión 1.0** (`odd2rng.py --version`)
+**Versión 1.3** (`odd2rng.py --version`)
 
 `odd2rng.py` convierte un ODD de TEI en su esquema RELAX NG desde la línea de
 órdenes. Ejecuta las mismas dos transformaciones, con los mismos parámetros,
@@ -14,7 +14,9 @@ fecha de generación del comentario de cabecera.
 odd2rng.py smed-schema.xml          # escribe out/smed-schema.rng, como oXygen
 ```
 
-Cómo se hizo se cuenta en [`docs/DESCRIPCIÓN_es.md`](docs/DESCRIPCIÓN_es.md).
+Cómo se hizo se cuenta en [`docs/DESCRIPCIÓN_es.md`](docs/DESCRIPCIÓN_es.md); el
+software libre que usa, con la licencia de cada uno, está en
+[`docs/THIRD-PARTY_es.md`](docs/THIRD-PARTY_es.md).
 
 ## Requisitos
 
@@ -154,3 +156,6 @@ Este programa se distribuye con la esperanza de que sea útil, pero SIN
 GARANTÍA ALGUNA; ni siquiera la garantía implícita de COMERCIABILIDAD o de
 IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Véase la [Licencia Pública General
 de GNU](LICENSE) para más detalles.
+
+El software con que corre y se prueba ODD2RNG conserva sus propias
+licencias: véase [`docs/THIRD-PARTY_es.md`](docs/THIRD-PARTY_es.md).

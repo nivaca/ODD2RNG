@@ -4,6 +4,14 @@ All notable changes to ODD2RNG. The releases, with their zip files, are on
 [Codeberg](https://codeberg.org/nivaca/ODD2RNG/releases) and
 [GitHub](https://github.com/nivaca/ODD2RNG/releases).
 
+## 1.3 — 2026-11-21
+
+- `docs/THIRD-PARTY.md` (and `docs/THIRD-PARTY_es.md`, in Spanish): the
+  open-source software ODD2RNG uses, and the licence of each, from what it
+  runs with (Python, saxonche, the TEI Stylesheets and the TEI source) to
+  what it is tested and released with.
+- The conversion does not change.
+
 ## 1.2 — 2026-11-19
 
 - py-xmlvalidate, the Schematron validator that reads ODD2RNG's
