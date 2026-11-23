@@ -9,7 +9,8 @@ a folder of the same name: odd2rng.py, odd2rng-install.py, the READMEs, the
 licence and docs/.  It is made from the files git tracks, so nothing that
 only lives in this folder gets in (test output, editor lock files ...).
 Left out as well: tools/, with this script, which is not part of the
-program, and hidden files.  The two scripts keep their permission to run.
+program, packaging/ (the public key that signs the releases) and hidden
+files.  The two scripts keep their permission to run.
 
 dist is made in the program's folder if need be; --output gives another
 folder.  If any of the bundled files has changes not committed yet, it
@@ -28,7 +29,7 @@ DIST = os.path.join(HERE, "dist")
 NAME = "ODD2RNG"
 
 #  What is in the repository but not part of the program
-NOT_PART = ("tools/",)
+NOT_PART = ("tools/", "packaging/")
 
 
 def version() -> str:
