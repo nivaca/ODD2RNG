@@ -1,0 +1,21 @@
+{
+  "title": "ODD2RNG",
+  "upload_type": "software",
+  "description": "<p>Turns a TEI ODD into its RELAX NG schema, from the command line.</p>",
+  "creators": [
+    {
+      "name": "Vaughan, Nicolas",
+      "affiliation": "Universidad de los Andes",
+      "orcid": "0000-0002-2877-0539"
+    }
+  ],
+  "license": "gpl-3.0-or-later",
+  "access_right": "open",
+  "keywords": [
+    "TEI",
+    "ODD",
+    "RELAX NG",
+    "XML",
+    "schema"
+  ]
+}

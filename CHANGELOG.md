@@ -4,6 +4,18 @@ All notable changes to ODD2RNG. The releases, with their zip files, are on
 [Codeberg](https://codeberg.org/nivaca/ODD2RNG/releases) and
 [GitHub](https://github.com/nivaca/ODD2RNG/releases).
 
+## Unreleased
+
+- `tools/zenodo.py` prepares the deposit of a release for Zenodo. `collect`
+  puts in `dist/zenodo/` the tree of the tag as
+  `ODD2RNG-VERSION-source.tar.gz`, with its signature, a signed `SHA256SUMS`
+  of the deposit and the public key, and checks every signature with only
+  that key (`--packages` adds the files of the release). `upload` sends it
+  to Zenodo as a draft, a new version of the deposit if there is one
+  already, and never publishes it. `tools/release.py` now collects the
+  deposit after the tag and uploads it as a draft, unless `--no-zenodo`. The
+  metadata are in `.zenodo.json`.
+
 ## 1.3 — 2026-11-21
 
 - `docs/THIRD-PARTY.md` (and `docs/THIRD-PARTY_es.md`, in Spanish): the
