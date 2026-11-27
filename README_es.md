@@ -143,7 +143,10 @@ clon de las Stylesheets, así que ninguna se salta.
 `python3 tools/release.py` publica la versión de `odd2rng.py`, con las notas
 de `CHANGELOG.md`: corre las pruebas, hace el zip, etiqueta, sube a Codeberg
 y a GitHub, crea ambas versiones y comprueba las descargas (`--dry-run` se
-detiene antes de etiquetar). Es el script de publicación de
+detiene antes de etiquetar). El zip, su firma y `SHA256SUMS` se hacen en
+`build/release/`, y el depósito para Zenodo en `build/zenodo/`; las dos
+carpetas se borran al final, cuando todo está publicado. Es el script de
+publicación de
 [py-schematron](https://codeberg.org/nivaca/py-schematron), que también
 conoce este repositorio.
 

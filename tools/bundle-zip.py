@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (C) 2026 Nicolas Vaughan <nicolasvaughan@proton.me>
 # This file is part of ODD2RNG. See the LICENSE file for details.
-"""Makes the release bundle in dist/: python3 tools/bundle-zip.py
+"""Makes the release bundle in build/release/: python3 tools/bundle-zip.py
 
-dist/ODD2RNG-v.VERSION.zip (the version of odd2rng.py), with the program in
+build/release/ODD2RNG-v.VERSION.zip (the version of odd2rng.py), with the program in
 a folder of the same name: odd2rng.py, odd2rng-install.py, the READMEs, the
 licence and docs/.  It is made from the files git tracks, so nothing that
 only lives in this folder gets in (test output, editor lock files ...).
@@ -12,9 +12,11 @@ Left out as well: tools/, with this script, which is not part of the
 program, packaging/ (the public key that signs the releases) and hidden
 files.  The two scripts keep their permission to run.
 
-dist is made in the program's folder if need be; --output gives another
-folder.  If any of the bundled files has changes not committed yet, it
-says so, since the zip takes the files as they are now.
+build/release is made in the program's folder if need be (tools/release.py
+publishes it from there, and deletes it at the end; dist/ is not used);
+--output gives another folder.  If any of the bundled files has changes
+not committed yet, it says so, since the zip takes the files as they are
+now.
 """
 
 import argparse
@@ -25,7 +27,7 @@ import sys
 import zipfile
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # (above tools/)
-DIST = os.path.join(HERE, "dist")
+DIST = os.path.join(HERE, "build", "release")  # (not dist/: see tools/release.py)
 NAME = "ODD2RNG"
 
 #  What is in the repository but not part of the program
@@ -90,7 +92,7 @@ def main(argv=None):
         prog="tools/bundle-zip.py",
         description=f"Make the release bundle: {name()}.zip.")
     parser.add_argument("-o", "--output", metavar="FOLDER", default=None,
-                        help="the folder to write it in (default: dist, in the program's folder)")
+                        help="the folder to write it in (default: build/release, in the program's folder)")
     parser.add_argument("-l", "--list", action="store_true",
                         help="only list the files the zip would have")
     args = parser.parse_args(argv)

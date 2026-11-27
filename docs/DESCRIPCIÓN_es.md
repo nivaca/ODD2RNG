@@ -14,7 +14,7 @@ Los archivos del proyecto son estos:
 
 - `odd2rng.py`: la conversión.
 - `odd2rng-install.py`: enlaza la orden en `~/bin` y escribe el archivo de configuración si no existe.
-- `tools/bundle-zip.py`: hace el zip de cada versión publicada en `dist/`.
+- `tools/bundle-zip.py`: hace el zip de cada versión publicada en `build/release/`, que `tools/release.py` borra al publicarla.
 - `docs/`: las descripciones.
 
 Dónde están las TEI Stylesheets se decide en este orden: la línea de órdenes (`--stylesheets`, `--p5subset`), las variables de entorno `TEI_STYLESHEETS` y `TEI_P5SUBSET`, o el archivo `config.toml` de la carpeta de ajustes del usuario (`~/.config/odd2rng/` en Linux), como en los demás programas del autor. La fuente de TEI puede omitirse: el script la busca en `source/p5subset.xml` dentro de un clon de las Stylesheets, y en `odd/p5subset.xml` junto a la carpeta de hojas de estilo de oXygen.

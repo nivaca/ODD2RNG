@@ -143,7 +143,10 @@ every Monday, with a clone of the Stylesheets, so none is skipped.
 `python3 tools/release.py` releases the version in `odd2rng.py`, with the
 notes of `CHANGELOG.md`: it runs the tests, makes the zip, tags, pushes to
 Codeberg and GitHub, makes both releases and checks the downloads
-(`--dry-run` stops before tagging). It is the release script of
+(`--dry-run` stops before tagging). The zip, its signature and `SHA256SUMS`
+are made in `build/release/`, and the deposit for Zenodo in `build/zenodo/`;
+both are deleted at the end, once everything is published. It is the release
+script of
 [py-schematron](https://codeberg.org/nivaca/py-schematron), which knows
 this repository too.
 
