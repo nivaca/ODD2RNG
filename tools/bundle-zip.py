@@ -2,21 +2,20 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (C) 2026 Nicolas Vaughan <nicolasvaughan@proton.me>
 # This file is part of ODD2RNG. See the LICENSE file for details.
-"""Makes the release bundle in build/release/: python3 tools/bundle-zip.py
+"""Hace el zip de la versión en build/release/: python3 tools/bundle-zip.py
 
-build/release/ODD2RNG-v.VERSION.zip (the version of odd2rng.py), with the program in
-a folder of the same name: odd2rng.py, odd2rng-install.py, the READMEs, the
-licence and docs/.  It is made from the files git tracks, so nothing that
-only lives in this folder gets in (test output, editor lock files ...).
-Left out as well: tools/, with this script, which is not part of the
-program, packaging/ (the public key that signs the releases) and hidden
-files.  The two scripts keep their permission to run.
+build/release/ODD2RNG-v.VERSION.zip (la versión de odd2rng.py), con el programa
+en una carpeta del mismo nombre: odd2rng.py, odd2rng-install.py, los README, la
+licencia y docs/.  Se hace con los archivos que git sigue, así que no entra nada
+que solo exista en esta carpeta (salidas de las pruebas, archivos de bloqueo del
+editor...).  Quedan fuera también tools/, con este script, que no es parte del
+programa, packaging/ (la clave pública que firma las versiones) y los archivos
+ocultos.  Los dos scripts conservan su permiso de ejecución.
 
-build/release is made in the program's folder if need be (tools/release.py
-publishes it from there, and deletes it at the end; dist/ is not used);
---output gives another folder.  If any of the bundled files has changes
-not committed yet, it says so, since the zip takes the files as they are
-now.
+build/release se crea en la carpeta del programa si hace falta (tools/release.py
+lo publica desde allí y lo borra al final; dist/ no se usa); --output da otra
+carpeta.  Si alguno de los archivos del zip tiene cambios que aún no están en un
+commit, lo advierte, porque el zip toma los archivos tal como están ahora.
 """
 
 import argparse
