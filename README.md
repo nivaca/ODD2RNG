@@ -122,10 +122,14 @@ only difference is the date in the header.
 ## Tests and releases
 
 ```sh
-python3 -m unittest discover -s tests -v
+python3 tools/test.py
 ```
 
-runs the tests (`tests/test_odd2rng.py`) in a temporary folder, with a
+runs the tests at once, each file in a process of its own, as many at a
+time as there are processors (`-j N` changes it; `-v` shows each file as
+it ends); `python3 -m unittest discover -s tests -v` runs them one after
+the other. The tests of the program (`tests/test_odd2rng.py`) run in a
+temporary folder, with a
 configuration of their own, so your settings change nothing: the
 configuration file and the order of the locations, `--about` and
 `--show-config`, the error messages, and real conversions of a small ODD

@@ -122,10 +122,14 @@ las TEI Stylesheets del propio oXygen (7.60.0) y con un clon más reciente
 ## Pruebas y versiones
 
 ```sh
-python3 -m unittest discover -s tests -v
+python3 tools/test.py
 ```
 
-corre las pruebas (`tests/test_odd2rng.py`) en una carpeta temporal, con una
+corre las pruebas a la vez, cada archivo en un proceso propio, tantos a la
+vez como procesadores haya (`-j N` lo cambia; `-v` muestra cada archivo a
+medida que termina); `python3 -m unittest discover -s tests -v` las corre
+una tras otra. Las del programa (`tests/test_odd2rng.py`) corren en una
+carpeta temporal, con una
 configuración propia, de modo que tus ajustes no cambian nada: el archivo de
 configuración y el orden de las ubicaciones, `--about` y `--show-config`,
 los mensajes de error y conversiones reales de un ODD pequeño (el esquema,

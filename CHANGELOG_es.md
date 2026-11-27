@@ -32,6 +32,9 @@ en [Codeberg](https://codeberg.org/nivaca/ODD2RNG/releases) y
   `--zenodo-draft` todavía lo deja. `tools/zenodo.py publish` publica un
   borrador que ya está allí (por omisión, el que espera con el título del
   proyecto).
+- `tools/test.py` corre las pruebas a la vez, cada archivo de `tests/` en
+  un proceso propio, tantos a la vez como procesadores haya (`-j N`), los
+  más lentos primero; así las corre `tools/release.py`.
 
 ## 1.3 — 2026-11-21
 
